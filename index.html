@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#173f6d" />
+  <title>Protocolos UTI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">BIBLIOTECA CLÍNICA PESSOAL</div>
+      <h1>Protocolos UTI</h1>
+      <p>Seus protocolos essenciais, organizados para consulta rápida.</p>
+    </div>
+    <div class="local-badge"><span></span> Dados salvos neste navegador</div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <button id="newProtocolBtn" class="primary full">+ Novo protocolo</button>
+
+      <div class="side-section">
+        <div class="side-title">Navegação</div>
+        <button class="nav-item active" data-filter="all">Todos <span id="countAll">0</span></button>
+        <button class="nav-item" data-filter="favorites">Favoritos <span id="countFav">0</span></button>
+      </div>
+
+      <div class="side-section">
+        <div class="side-title">Categorias</div>
+        <div id="categoryList"></div>
+      </div>
+
+      <div class="side-section">
+        <div class="side-title">Backup</div>
+        <button id="exportBtn" class="secondary full">Exportar JSON</button>
+        <label class="secondary full file-label">
+          Importar JSON
+          <input id="importInput" type="file" accept=".json,application/json" hidden />
+        </label>
+      </div>
+    </aside>
+
+    <section class="content">
+      <div class="toolbar">
+        <div class="search-wrap">
+          <input id="searchInput" type="search" placeholder="Buscar protocolo, palavra-chave, medicação..." />
+        </div>
+        <select id="sortSelect">
+          <option value="updated">Mais recentes</option>
+          <option value="title">A–Z</option>
+          <option value="category">Categoria</option>
+        </select>
+      </div>
+
+      <div class="summary-strip">
+        <div><strong id="protocolCount">0</strong><span>protocolos</span></div>
+        <div><strong id="favoriteCount">0</strong><span>favoritos</span></div>
+        <div><strong id="categoryCount">0</strong><span>categorias</span></div>
+      </div>
+
+      <div id="emptyState" class="empty-state hidden">
+        <h2>Nenhum protocolo encontrado</h2>
+        <p>Crie seu primeiro protocolo ou altere os filtros.</p>
+      </div>
+
+      <div id="protocolGrid" class="protocol-grid"></div>
+    </section>
+  </main>
+
+  <dialog id="protocolDialog">
+    <form id="protocolForm" method="dialog">
+      <div class="dialog-head">
+        <div>
+          <div class="eyebrow">EDITOR</div>
+          <h2 id="dialogTitle">Novo protocolo</h2>
+        </div>
+        <button type="button" id="closeDialogBtn" class="icon-btn" aria-label="Fechar">×</button>
+      </div>
+
+      <input type="hidden" id="protocolId" />
+
+      <div class="form-grid">
+        <label class="wide">
+          Título
+          <input id="titleInput" required placeholder="Ex.: Hipercalemia grave" />
+        </label>
+
+        <label>
+          Categoria
+          <input id="categoryInput" list="categoryOptions" required placeholder="Ex.: Eletrólitos" />
+          <datalist id="categoryOptions"></datalist>
+        </label>
+
+        <label>
+          Tags
+          <input id="tagsInput" placeholder="Ex.: potássio, ECG, emergência" />
+        </label>
+
+        <label class="wide">
+          Resumo rápido
+          <textarea id="summaryInput" rows="3" placeholder="O essencial para bater o olho durante o plantão."></textarea>
+        </label>
+
+        <label class="wide">
+          Indicações / quando usar
+          <textarea id="indicationsInput" rows="4"></textarea>
+        </label>
+
+        <label class="wide">
+          Conduta / passo a passo
+          <textarea id="stepsInput" rows="8" placeholder="Uma etapa por linha."></textarea>
+        </label>
+
+        <label class="wide">
+          Doses / diluições / ajustes
+          <textarea id="dosesInput" rows="6"></textarea>
+        </label>
+
+        <label class="wide">
+          Alertas e contraindicações
+          <textarea id="warningsInput" rows="5"></textarea>
+        </label>
+
+        <label class="wide">
+          Monitorização / metas
+          <textarea id="monitoringInput" rows="5"></textarea>
+        </label>
+
+        <label class="wide">
+          Referências / fonte institucional
+          <textarea id="referencesInput" rows="4" placeholder="Diretriz, protocolo local, DOI, link, edição do livro..."></textarea>
+        </label>
+      </div>
+
+      <div class="dialog-actions">
+        <button type="button" id="deleteBtn" class="danger hidden">Excluir</button>
+        <div class="spacer"></div>
+        <button type="button" id="cancelBtn" class="secondary">Cancelar</button>
+        <button type="submit" class="primary">Salvar protocolo</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="viewDialog">
+    <div class="view-dialog">
+      <div class="dialog-head">
+        <div>
+          <div class="eyebrow" id="viewCategory"></div>
+          <h2 id="viewTitle"></h2>
+        </div>
+        <button type="button" id="closeViewBtn" class="icon-btn" aria-label="Fechar">×</button>
+      </div>
+      <div id="viewTags" class="tag-row"></div>
+      <div id="viewContent"></div>
+      <div class="dialog-actions">
+        <button id="viewFavoriteBtn" class="secondary">☆ Favoritar</button>
+        <div class="spacer"></div>
+        <button id="editFromViewBtn" class="primary">Editar</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
