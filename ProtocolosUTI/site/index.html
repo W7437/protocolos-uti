@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Protocolos UTI</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div>
+    <small>CONSULTA RÁPIDA</small>
+    <h1>Protocolos UTI</h1>
+    <p>Protocolos, diluições e distúrbios hidroeletrolíticos.</p>
+  </div>
+</header>
+
+<nav>
+  <button class="tab active" data-page="inicio">Início</button>
+  <button class="tab" data-page="protocolos">Protocolos</button>
+  <button class="tab" data-page="diluicoes">Diluições</button>
+  <button class="tab" data-page="hidro">Distúrbios hidroeletrolíticos</button>
+  <button class="tab" data-page="referencias">Referências</button>
+</nav>
+
+<main>
+<section id="inicio" class="page active">
+  <div class="hero">
+    <div>
+      <small>À BEIRA-LEITO</small>
+      <h2>Encontre a conduta em segundos.</h2>
+      <p>O usuário consulta. O conteúdo é fixo e validado no código do site.</p>
+    </div>
+    <input id="buscaGlobal" placeholder="Buscar: hipercalemia, noradrenalina, sepse...">
+  </div>
+
+  <h3>Áreas principais</h3>
+  <div class="grid">
+    <button class="card go" data-go="protocolos"><b>Hemodinâmica</b><span>Choque, perfusão e DVA</span></button>
+    <button class="card go" data-go="protocolos"><b>Ventilação</b><span>VM e oxigenação</span></button>
+    <button class="card go" data-go="protocolos"><b>Sedoanalgesia</b><span>Analgesia e sedação</span></button>
+    <button class="card special go" data-go="hidro"><b>Hidroeletrolíticos</b><span>Na, K, Mg, Ca, P e HCO₃</span></button>
+    <button class="card go" data-go="diluicoes"><b>Diluições</b><span>Preparo das principais drogas</span></button>
+    <button class="card go" data-go="protocolos"><b>Infectologia</b><span>Sepse e antimicrobianos</span></button>
+  </div>
+</section>
+
+<section id="protocolos" class="page">
+  <div class="head"><div><small>BIBLIOTECA</small><h2>Protocolos</h2></div><input id="buscaProtocolos" placeholder="Buscar protocolo..."></div>
+  <div id="listaProtocolos" class="grid"></div>
+</section>
+
+<section id="diluicoes" class="page">
+  <div class="head"><div><small>PREPARO RÁPIDO</small><h2>Diluições</h2><p>Apresentação, preparo e concentração final.</p></div><input id="buscaDiluicoes" placeholder="Buscar medicação..."></div>
+  <div class="notice">Os valores clínicos serão preenchidos somente após validação das apresentações locais e das fontes.</div>
+  <div class="table">
+    <div class="row th"><b>Medicação</b><b>Apresentação</b><b>Preparo</b><b>Concentração</b></div>
+    <div id="listaDiluicoes"></div>
+  </div>
+</section>
+
+<section id="hidro" class="page">
+  <div class="head"><div><small>MÓDULO ESPECÍFICO</small><h2>Distúrbios hidroeletrolíticos</h2><p>Diagnóstico, correção e monitorização.</p></div></div>
+  <div id="hidroHome" class="grid">
+    <button class="card elet" data-el="Potássio" data-sym="K"><b>K — Potássio</b><span>Hipocalemia e hipercalemia</span></button>
+    <button class="card elet" data-el="Sódio" data-sym="Na"><b>Na — Sódio</b><span>Hiponatremia e hipernatremia</span></button>
+    <button class="card elet" data-el="Magnésio" data-sym="Mg"><b>Mg — Magnésio</b><span>Hipomagnesemia e reposição</span></button>
+    <button class="card elet" data-el="Cálcio" data-sym="Ca"><b>Ca — Cálcio</b><span>Hipocalcemia e correções</span></button>
+    <button class="card elet" data-el="Fósforo" data-sym="P"><b>P — Fósforo</b><span>Hipofosfatemia e reposição</span></button>
+    <button class="card elet" data-el="Bicarbonato" data-sym="HCO₃"><b>HCO₃ — Bicarbonato</b><span>Acidose metabólica e uso criterioso</span></button>
+  </div>
+
+  <div id="hidroDetalhe" class="hidden">
+    <button id="voltar">← Voltar</button>
+    <div class="detail-title"><div id="simbolo"></div><div><small>DISTÚRBIO HIDROELETROLÍTICO</small><h2 id="nomeEl"></h2></div></div>
+    <div class="grid detail">
+      <article class="panel"><h3>Reconhecimento</h3><p>Faixas e critérios de gravidade.</p></article>
+      <article class="panel"><h3>Conduta imediata</h3><p>Prioridades e sequência terapêutica.</p></article>
+      <article class="panel"><h3>Reposição / correção</h3><p>Dose, apresentação, diluição, via e velocidade.</p></article>
+      <article class="panel"><h3>Monitorização</h3><p>Metas, nova coleta e parâmetros de segurança.</p></article>
+      <article class="panel full"><h3>Alertas</h3><p>Função renal, ECG, acesso e limites de correção.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="referencias" class="page">
+  <small>FONTES</small><h2>Referências</h2>
+  <article class="panel"><h3>Princípio do projeto</h3><p>Cada protocolo terá fonte e data de revisão. O usuário final não edita o conteúdo.</p></article>
+</section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

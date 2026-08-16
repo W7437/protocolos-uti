@@ -1,0 +1,12 @@
+{
+  "name": "protocolos-uti",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler pages dev site",
+    "deploy": "wrangler pages deploy site"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
